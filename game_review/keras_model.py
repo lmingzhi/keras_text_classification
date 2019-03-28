@@ -220,7 +220,7 @@ cnn2 = Convolution1D(256, 4, padding='same', strides = 1, activation='relu')(emb
 cnn2 = MaxPool1D(pool_size=4)(cnn2)
 cnn3 = Convolution1D(256, 5, padding='same', strides = 1, activation='relu')(embed)
 cnn3 = MaxPool1D(pool_size=4)(cnn3)
-cnn = concatenate([cnn1,cnn2,cnn3], axis=-1)
+cnn = concatenate([cnn1,cnn2,cnn3], axis=-1)  #Sequential模型框架不能进行这样的操作
 flat = Flatten()(cnn)
 drop = Dropout(0.2)(flat)
 main_output = Dense(num_labels, activation='softmax')(drop)
